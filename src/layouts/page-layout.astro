@@ -1,0 +1,20 @@
+---
+import Head from "@/components/head.astro";
+import type { ComponentProps } from "astro/types";
+import Header from "@/components/header.astro";
+
+type Props = ComponentProps<typeof Head>;
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+  <Head {title} {description} />
+
+  <body>
+    <Header />
+    <main class="container">
+      <slot />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/*noinspection CssUnresolvedCustomProperty*/
+@theme {
+    --font-headline: var(--font-inconsolata);
+    --font-body: var(--font-fira-code);
+}
+
+@utility container {
+    @apply mx-auto px-4;
+}
+
+body {
+    @apply font-body;
+}
