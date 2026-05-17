@@ -3,11 +3,14 @@ import { defineConfig, fontProviders } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+
   fonts: [
     {
       provider: fontProviders.fontsource(),
@@ -20,4 +23,6 @@ export default defineConfig({
       cssVariable: "--font-inconsolata",
     },
   ],
+
+  adapter: cloudflare(),
 });
