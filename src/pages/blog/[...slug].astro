@@ -5,6 +5,8 @@ import { type CollectionEntry, getCollection, render } from "astro:content";
 import { isPublished } from "@/lib/content/blog.ts";
 import PageLayout from "@/layouts/page-layout.astro";
 import { getReadingTime } from "@/lib/reading-time.ts";
+import GiscusWidget from "@/components/giscus-widget.astro";
+
 export const getStaticPaths = (async () => {
   const entries = pipe(await getCollection("blog"), Array.filter(isPublished));
 
@@ -32,4 +34,6 @@ const readingTime = getReadingTime(entry);
   <article class="prose">
     <Content />
   </article>
+
+  <GiscusWidget />
 </PageLayout>
