@@ -1,0 +1,24 @@
+---
+import { type CollectionEntry, render } from "astro:content";
+import { getReadingTime } from "@/lib/reading-time.ts";
+type Props = {
+  entry: CollectionEntry<"blog">;
+};
+
+const {
+  entry: {
+    data: { title, description, date },
+  },
+} = Astro.props;
+
+const readingTime = getReadingTime(Astro.props.entry);
+---
+
+<div
+  class="bg-surface-variant border border-outline-variant p-4 rounded-xl
+text-on-surface"
+>
+  <h2 class="font-bold font-headline">{title}</h2>
+  <p>{description}</p>
+  <p>{readingTime.text} {date.toLocaleDateString()}</p>
+</div>

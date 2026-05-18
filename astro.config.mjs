@@ -21,8 +21,8 @@ export default defineConfig({
       provider: fontProviders.fontsource(),
       name: "Inconsolata",
       cssVariable: "--font-inconsolata",
+      weights: ["200 900"],
     },
   ],
-
   adapter: cloudflare(),
 });

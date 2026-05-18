@@ -1,0 +1,35 @@
+---
+import type { GetStaticPaths } from "astro";
+import { Array, pipe } from "effect";
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import { isPublished } from "@/lib/content/blog.ts";
+import PageLayout from "@/layouts/page-layout.astro";
+import { getReadingTime } from "@/lib/reading-time.ts";
+export const getStaticPaths = (async () => {
+  const entries = pipe(await getCollection("blog"), Array.filter(isPublished));
+
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: entry,
+  }));
+}) satisfies GetStaticPaths;
+
+type Props = CollectionEntry<"blog">;
+
+const entry = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(entry);
+
+const { title, description } = entry.data;
+const readingTime = getReadingTime(remarkPluginFrontmatter);
+---
+
+<PageLayout {title} {description}>
+  <a href="/blog">{`<-`} Back to Blog</a>
+
+  <h1>{title}</h1>
+  <p>{readingTime.text}</p>
+
+  <article class="prose">
+    <Content />
+  </article>
+</PageLayout>

@@ -1,11 +1,13 @@
 ---
-import { SITE } from "@/const";
+import { SITE } from "@/consts";
 ---
 
 <header>
   <div class="container">
-    <div class="flex flex-wrap justify-between">
-      <a href="/" class="font-headline text-xl font-semibold">{SITE.NAME}</a>
+    <div class="flex flex-wrap justify-between border-b-outline border-b py-2">
+      <a href="/" class="font-headline text-xl font-black uppercase"
+        >{`<${SITE.NAME}>`}</a
+      >
     </div>
   </div>
 </header>

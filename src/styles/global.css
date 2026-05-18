@@ -1,9 +1,63 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+
+:root {
+    --primary: #F48F68;
+    --on-primary: #2D160D;
+    --primary-container: #FFDBCF;
+    --on-primary-container: #390C00;
+
+    --secondary: #8BDFDD;
+    --on-secondary: #00201F;
+    --secondary-container: #AFEFEF;
+    --on-secondary-container: #00201F;
+
+    --tertiary: #FFE394;
+    --on-tertiary: #241A00;
+    --tertiary-container: #FFEFCA;
+    --on-tertiary-container: #241A00;
+
+    --background: #FFF6DE;
+    --on-background: #1F1B16;
+    --surface: #FFF6DE;
+    --on-surface: #1F1B16;
+
+    --surface-variant: #F0E2CF;
+    --on-surface-variant: #4F4539;
+
+    --outline: #817567;
+    --outline-variant: #D3C6B4;
+}
 
 /*noinspection CssUnresolvedCustomProperty*/
 @theme {
     --font-headline: var(--font-inconsolata);
     --font-body: var(--font-fira-code);
+
+    --color-background: var(--background);
+    --color-on-background: var(--on-background);
+    --color-surface: var(--surface);
+    --color-on-surface: var(--on-surface);
+    --color-surface-variant: var(--surface-variant);
+    --color-on-surface-variant: var(--on-surface-variant);
+    --color-outline: var(--outline);
+    --color-outline-variant: var(--outline-variant);
+
+    --color-primary: var(--primary);
+    --color-on-primary: var(--on-primary);
+    --color-primary-container: var(--primary-container);
+    --color-on-primary-container: var(--on-primary-container);
+
+    --color-secondary: var(--secondary);
+    --color-on-secondary: var(--on-secondary);
+    --color-secondary-container: var(--secondary-container);
+    --color-on-secondary-container: var(--on-secondary-container);
+
+    --color-tertiary: var(--tertiary);
+    --color-on-tertiary: var(--on-tertiary);
+    --color-tertiary-container: var(--tertiary-container);
+    --color-on-tertiary-container: var(--on-tertiary-container);
 }
 
 @utility container {
@@ -11,5 +65,9 @@
 }
 
 body {
-    @apply font-body;
+    @apply font-body bg-background text-on-background;
+}
+
+@utility prose {
+    @apply prose-headings:font-headline;
 }

@@ -1,0 +1,26 @@
+---
+import PageLayout from "@/layouts/page-layout.astro";
+import { getCollection } from "astro:content";
+import { METADATA } from "@/consts.ts";
+import { pipe, Array } from "effect";
+import { byDate, isPublished } from "@/lib/content/blog.ts";
+import BlogEntryCard from "@/components/blog-entry-card.astro";
+
+const entries = pipe(
+  await getCollection("blog"),
+  Array.filter(isPublished),
+  Array.sort(byDate),
+);
+---
+
+<PageLayout title={METADATA.BLOG.TITLE} description={METADATA.BLOG.DESCRIPTION}>
+  <h1>Blog</h1>
+
+  {
+    entries.map((entry) => (
+      <a href={`/blog/${entry.id}`}>
+        <BlogEntryCard {entry} />
+      </a>
+    ))
+  }
+</PageLayout>
