@@ -17,10 +17,10 @@ export const getStaticPaths = (async () => {
 type Props = CollectionEntry<"blog">;
 
 const entry = Astro.props;
-const { Content, remarkPluginFrontmatter } = await render(entry);
+const { Content } = await render(entry);
 
 const { title, description } = entry.data;
-const readingTime = getReadingTime(remarkPluginFrontmatter);
+const readingTime = getReadingTime(entry);
 ---
 
 <PageLayout {title} {description}>
